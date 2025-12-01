@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myk8sapp
+  labels:
+    app: myk8sapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myk8sapp
+  template:
+    metadata:
+      labels:
+        app: myk8sapp
+    spec:
+      containers:
+      - name: myk8sapp
+        # Replace with ghcr.io/<YOUR_GH_USER>/myk8sapp:latest if pushing to GHCR,
+        # or use myk8sapp:latest if you load the image into kind.
+        image: ghcr.io/<YOUR_GH_USER>/myk8sapp:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: http
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "64Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
