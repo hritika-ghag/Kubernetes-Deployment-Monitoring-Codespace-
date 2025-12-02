@@ -1,4 +1,4 @@
-# devops-k8s-project (zero-dependency app)
+# K8S-Deployment-Monitoring-Codespace
 
 A tiny K8s demo app that uses only Python stdlib (no Flask). Includes:
 - Dockerfile (no pip installs)
@@ -32,3 +32,4 @@ Endpoints:
 - /ping    -> ok JSON
 - /healthz -> health for probes
 - /metrics -> tiny Prometheus-format metrics
+
