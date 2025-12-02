@@ -33,3 +33,12 @@ Endpoints:
 - /healthz -> health for probes
 - /metrics -> tiny Prometheus-format metrics
 
+
+
+Steps:
+1) created all .yml files, dockerfile and app.py file and commit all on github
+2) Go to your repository → Code → Codespaces tab-> Click Create Codespace on main
+3) 
+4) 
+
+
