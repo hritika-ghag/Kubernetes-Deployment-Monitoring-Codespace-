@@ -38,7 +38,33 @@ Endpoints:
 Steps:
 1) created all .yml files, dockerfile and app.py file and commit all on github
 2) Go to your repository → Code → Codespaces tab-> Click Create Codespace on main
-3) 
-4) 
+3) Install kind, kubectl, and Helm:
+-sudo apt-get update -y
+-sudo apt-get install -y ca-certificates curl gnupg lsb-release
+-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+-chmod +x kubectl
+-sudo mv kubectl /usr/local/bin/
+-curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+-chmod +x kind
+-sudo mv kind /usr/local/bin/
+-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+4) Create a Kubernetes cluster in Codespaces
+-kind create cluster --name kind-cluster
+- kubectl get pods -l app=myk8sapp -w
+- kubectl port-forward svc/myk8sapp-svc 8080:80
+Open below in browser:
+https://crispy-invention-4j65pxg9ppg43j794-8080.app.github.dev/ping
+5) kubectl get pods -n monitoring -w
+run below in different terminal and open browser(popup u will get after running below commands):
+- kubectl port-forward -n monitoring svc/monitoring-grafana-c68f5849b-6nc5f 3000:80
+browser site: https://crispy-invention-4j65pxg9ppg43j794-3000.app.github.dev/login
+ID : admin
+Password: PFX1YTHapCigrCYMjk0xVMXeA57OemJ8nW71a5Gg
+- kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-operator-5784686955-krh89 9090:9090
+browser site: https://crispy-invention-4j65pxg9ppg43j794-9090.app.github.dev/query
+run in prometheus tab: 'up' command and 'kube_pod_info
+' command
+
+
 
 
