@@ -1,7 +1,5 @@
 # K8S-Deployment-Monitoring-Codespace
 
-# devops-k8s-project (zero-dependency app)
-
 A tiny K8s demo app that uses only Python stdlib (no Flask). Includes:
 - Dockerfile (no pip installs)
 - K8s manifests: Deployment, Service, Ingress, HPA
@@ -63,5 +61,7 @@ Password: PFX1YTHapCigrCYMjk0xVMXeA57OemJ8nW71a5Gg
 browser site: https://crispy-invention-4j65pxg9ppg43j794-9090.app.github.dev/query
 run in prometheus tab: 'up' command and 'kube_pod_info
 ' command
+
+
 
 
